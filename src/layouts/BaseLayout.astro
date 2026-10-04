@@ -11,7 +11,8 @@ const { pageTitle } = Astro.props;
         <meta name="author" content="Michiel van Eerd" />
         <title>{pageTitle}</title>
         <link href="/pagefind/pagefind-component-ui.css" rel="stylesheet" />
-        <script src="/pagefind/pagefind-component-ui.js" type="module"></script>
+        <script is:inline src="/pagefind/pagefind-component-ui.js" type="module"
+        ></script>
     </head>
     <body>
         <header>
@@ -19,7 +20,7 @@ const { pageTitle } = Astro.props;
         </header>
         <nav>
             <ul>
-                <li><a href="/">Home</a></li>
+                <li><a href="/blog">Home</a></li>
                 <li><a href="/tags">Tags</a></li>
                 <li><a href="/projects">Projects</a></li>
                 <li><a href="/about">About</a></li>

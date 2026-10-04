@@ -4,14 +4,27 @@ const { pageTitle, tags } = Astro.props;
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <div class="tags">
-        {
-            tags.map((tag: string) => (
-                <p class="tag">
-                    <a href={`/tags/${tag}`}>{tag}</a>
-                </p>
-            ))
-        }
+    <h2>{pageTitle}</h2>
+    <section class="article-info">
+        <div class="article-dates">
+            Published on <time datetime="2026-10-01">Oct 1, 2026</time> / Updated
+            on
+            <time datetime="2026-10-01">Oct 4, 2026</time>
+        </div>
+        <ul class="article-tags">
+            {
+                tags &&
+                    tags.map(function (tag: string) {
+                        return (
+                            <li>
+                                <a href={`/tags/${tag}`}>{tag}</a>
+                            </li>
+                        );
+                    })
+            }
+        </ul>
+    </section>
+    <div class="article-content">
+        <slot />
     </div>
-    <slot />
 </BaseLayout>

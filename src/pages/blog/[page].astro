@@ -1,6 +1,8 @@
 ---
+const pageTitle = "Blog";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import type { GetStaticPaths } from "astro";
-import { getCollection, render } from "astro:content";
+import { getCollection } from "astro:content";
 
 export const getStaticPaths = (async ({ paginate }) => {
     const posts = await getCollection("blog");
@@ -13,15 +15,23 @@ export const getStaticPaths = (async ({ paginate }) => {
     );
 }) satisfies GetStaticPaths;
 
-// All paginated data is passed on the "page" prop
 const { page } = Astro.props;
-
-// https://docs.astro.build/en/guides/routing/#pagination
 ---
 
-<!-- Display the current page number. `Astro.params.page` can also be used! -->
-<h1>Page {page.currentPage}</h1>
-<ul>
-    <!-- List the array of astronaut info -->
-    {page.data.map(({ props }) => <li>{props.post.data.title}</li>)}
-</ul>
+<BaseLayout pageTitle={pageTitle}>
+    <ul>
+        {
+            page.data.map(({ props }) => (
+                <li>
+                    <a href={`/posts/${props.post.id}`}>
+                        {props.post.data.title}
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+    {page.url.first ? <a href={page.url.first}>First</a> : null}
+    {page.url.prev ? <a href={page.url.prev}>Previous</a> : null}
+    {page.url.next ? <a href={page.url.next}>Next</a> : null}
+    {page.url.last ? <a href={page.url.last}>Last</a> : null}
+</BaseLayout>

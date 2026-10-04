@@ -1,21 +1,14 @@
 ---
 const pageTitle = "Blog";
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageLayout from "../../layouts/PageLayout.astro";
 import { getCollection } from "astro:content";
 const posts = (await getCollection("blog")).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<PageLayout pageTitle={pageTitle}>
     <ul>
-        {
-            // allPosts.map((post: any) => (
-            //     <li>
-            //         <a href={post.url}>{post.frontmatter.title}</a>
-            //     </li>
-            // ))
-        }
         {
             posts.map((post) => (
                 <li>
@@ -24,4 +17,4 @@ const posts = (await getCollection("blog")).sort(
             ))
         }
     </ul>
-</BaseLayout>
+</PageLayout>
