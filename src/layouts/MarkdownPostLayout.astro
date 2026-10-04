@@ -1,15 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-const { pageTitle, tags } = Astro.props;
+const { pageTitle, tags, pubDate } = Astro.props;
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <h2>{pageTitle}</h2>
+    <h1>{pageTitle}</h1>
     <section class="article-info">
         <div class="article-dates">
-            Published on <time datetime="2026-10-01">Oct 1, 2026</time> / Updated
-            on
-            <time datetime="2026-10-01">Oct 4, 2026</time>
+            Published on <time datetime={pubDate}>{pubDate.toDateString()}</time
+            >
         </div>
         <ul class="article-tags">
             {

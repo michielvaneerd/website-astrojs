@@ -13,6 +13,11 @@ a {
     color: #3B429F;
 }
 
+header h1 {
+    font-weight: normal;
+    font-size: 1rem;
+}
+
 .article-tags a,
 nav a {
     text-decoration: none;
@@ -64,6 +69,13 @@ nav li {
 
 .article-content {
     line-height: 1.5;
+}
+
+main h1,
+main h2,
+main h3,
+main h4 {
+    font-weight: normal;
 }
 
 ul.article-tags {
