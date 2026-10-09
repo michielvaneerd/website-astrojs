@@ -8,4 +8,7 @@ export default defineConfig({
             theme: 'ayu-light',
         },
     },
+    // redirects: {
+    //     '/tags/[...tag]': '/tags/[tag]/1',
+    // }
 });

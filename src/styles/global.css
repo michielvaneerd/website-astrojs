@@ -26,6 +26,10 @@ h5,
 h6,
 pre.astro-code,
 table {
+    margin-top: 2rem;
+}
+
+.blog-post-list p {
     margin-top: 1rem;
 }
 
@@ -121,7 +125,7 @@ ul.blog-post-list li {
 }
 
 p {
-    line-height: 1.5;
+    line-height: 1.8;
 }
 
 main h1,
