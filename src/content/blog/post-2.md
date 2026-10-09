@@ -1,6 +1,6 @@
 ---
 title: My Second Blog Post
-description: "After learning some Astro, I couldn't stop!"
+description: "After learning some Astro, I couldn't stop! After learning some Astro, I couldn't stop! After learning some Astro, I couldn't stop! After learning some Astro, I couldn't stop! After learning some Astro, I couldn't stop! After learning some Astro, I couldn't stop! After learning some Astro, I couldn't stop!"
 pubDate: 2022-07-08
 tags: ["astro", "blogging", "learning in public", "successes"]
 ---

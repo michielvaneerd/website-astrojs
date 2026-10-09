@@ -1,6 +1,6 @@
 ---
 title: 'LLM providers'
-description: 'Describes LLM providers'
+description: 'Describes LLM providers and how to work with them. This should be long enough to get the screen to be displayed at full width. Hopefully this will be the case. I try to make it long enough.'
 pubDate: 2026-10-03
 tags: ["ai"]
 ---

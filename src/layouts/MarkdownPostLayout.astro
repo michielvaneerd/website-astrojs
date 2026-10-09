@@ -1,27 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import PostPublishedLayout from "../layouts/PostPublishedLayout.astro";
+import TagsLayout from "../layouts/TagsLayout.astro";
 const { pageTitle, tags, pubDate } = Astro.props;
 ---
 
 <BaseLayout pageTitle={pageTitle}>
     <h1>{pageTitle}</h1>
     <section class="article-info">
-        <div class="article-dates">
-            Published on <time datetime={pubDate}>{pubDate.toDateString()}</time
-            >
-        </div>
-        <ul class="article-tags">
-            {
-                tags &&
-                    tags.map(function (tag: string) {
-                        return (
-                            <li>
-                                <a href={`/tags/${tag}`}>{tag}</a>
-                            </li>
-                        );
-                    })
-            }
-        </ul>
+        <PostPublishedLayout pubDate={pubDate} />
+        <TagsLayout tags={tags} />
     </section>
     <div class="article-content">
         <slot />

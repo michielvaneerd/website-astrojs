@@ -1,11 +1,14 @@
 ---
 const pageTitle = "Blog";
 import PageLayout from "../../layouts/PageLayout.astro";
+import PostsLayout from "../../layouts/PostsLayout.astro";
 import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 
 export const getStaticPaths = (async ({ paginate }) => {
-    const posts = await getCollection("blog");
+    const posts = (await getCollection("blog")).sort(
+        (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+    );
     return paginate(
         posts.map((post) => ({
             params: { id: post.id },
@@ -19,19 +22,5 @@ const { page } = Astro.props;
 ---
 
 <PageLayout pageTitle={pageTitle}>
-    <ul>
-        {
-            page.data.map(({ props }) => (
-                <li>
-                    <a href={`/posts/${props.post.id}`}>
-                        {props.post.data.title}
-                    </a>
-                </li>
-            ))
-        }
-    </ul>
-    {page.url.first ? <a href={page.url.first}>First</a> : null}
-    {page.url.prev ? <a href={page.url.prev}>Previous</a> : null}
-    {page.url.next ? <a href={page.url.next}>Next</a> : null}
-    {page.url.last ? <a href={page.url.last}>Last</a> : null}
+    <PostsLayout page={page} />
 </PageLayout>

@@ -1,6 +1,6 @@
 ---
 title: My Fourth Blog Post
-description: "This post will show up on its own!"
+description: "This post will show up on its own! This post will show up on its own! This post will show up on its own! This post will show up on its own! This post will show up on its own!"
 pubDate: 2022-08-08
 tags: ["astro", "successes"]
 ---

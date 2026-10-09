@@ -1,0 +1,7 @@
+---
+const { pubDate } = Astro.props;
+---
+
+<div class="article-dates">
+    Published on <time datetime={pubDate}>{pubDate.toDateString()}</time>
+</div>

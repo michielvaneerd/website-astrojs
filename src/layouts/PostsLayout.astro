@@ -1,0 +1,27 @@
+---
+import PostPublishedLayout from "../layouts/PostPublishedLayout.astro";
+const { page } = Astro.props;
+---
+
+<ul class="blog-post-list">
+    {
+        page.data.map(({ props }: { props: any }) => (
+            <li>
+                <h2>
+                    <a href={`/posts/${props.post.id}`}>
+                        {props.post.data.title}
+                    </a>
+                </h2>
+                <PostPublishedLayout pubDate={props.post.data.pubDate} />
+                <p>{props.post.data.description}</p>
+            </li>
+        ))
+    }
+</ul>
+<div class="pagination">
+    <a href={page.url.first}>Newest</a>
+    <a href={page.url.prev}>Newer</a>
+    <a href={page.url.next}>Older</a>
+    <a href={page.url.last}>Oldest</a>
+</div>
+<div class="pagination-total">Total number of posts: {page.total}</div>

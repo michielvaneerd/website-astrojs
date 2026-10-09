@@ -1,20 +1,14 @@
 ---
 import PageLayout from "../../layouts/PageLayout.astro";
+import TagsLayout from "../../layouts/TagsLayout.astro";
 import { getCollection } from "astro:content";
 const posts = await getCollection("blog");
-const tags = [...new Set(posts.map((post: any) => post.data.tags).flat())];
+const tags = [
+    ...new Set(posts.map((post: any) => post.data.tags).flat()),
+].sort();
 const pageTitle = "Tags Page";
 ---
 
 <PageLayout pageTitle={pageTitle}>
-    <p>Here are all the tags!</p>
-    <div>
-        {
-            tags.map((tag) => (
-                <p>
-                    <a href={`/tags/${tag}`}>{tag}</a>
-                </p>
-            ))
-        }
-    </div>
+    <TagsLayout tags={tags} />
 </PageLayout>

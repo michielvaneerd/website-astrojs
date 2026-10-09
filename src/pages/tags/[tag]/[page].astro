@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import type { GetStaticPaths } from "astro";
+import PostsLayout from "../../../layouts/PostsLayout.astro";
+
+export const getStaticPaths = (async ({ paginate }) => {
+    const posts = await getCollection("blog");
+    const uniqueTags = [
+        ...new Set(posts.map((post: any) => post.data.tags).flat()),
+    ];
+    return uniqueTags.flatMap((tag) => {
+        const filteredPosts = posts.filter((post: any) =>
+            post.data.tags.includes(tag),
+        );
+
+        return paginate(
+            filteredPosts.map((post) => ({
+                params: { id: post.id },
+                props: { post },
+            })),
+            { params: { tag }, pageSize: 2 },
+        );
+    });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+const params = Astro.params;
+---
+
+<BaseLayout pageTitle={params.tag}>
+    <h1 class="selected-tag-title">Posts tagged with <em>{params.tag}</em></h1>
+    <PostsLayout page={page} />
+</BaseLayout>
