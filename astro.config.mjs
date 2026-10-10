@@ -8,7 +8,7 @@ export default defineConfig({
             theme: 'night-owl-light',
         },
     },
-    // redirects: {
-    //     '/tags/[...tag]': '/tags/[tag]/1',
-    // }
+    redirects: {
+        '/': '/blog',
+    }
 });
