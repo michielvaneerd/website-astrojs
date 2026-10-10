@@ -6,12 +6,12 @@ const { pageTitle, tags, pubDate } = Astro.props;
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <h1>{pageTitle}</h1>
+    <h1 data-pagefind-meta="title">{pageTitle}</h1>
     <section class="article-info">
         <PostPublishedLayout pubDate={pubDate} />
         <TagsLayout tags={tags} />
     </section>
-    <div class="article-content">
+    <div data-pagefind-body class="article-content">
         <slot />
     </div>
 </BaseLayout>

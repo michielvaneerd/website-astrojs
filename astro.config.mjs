@@ -5,7 +5,7 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
     markdown: {
         shikiConfig: {
-            theme: 'ayu-light',
+            theme: 'night-owl-light',
         },
     },
     // redirects: {
