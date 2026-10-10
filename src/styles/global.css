@@ -128,13 +128,6 @@ p {
     line-height: 1.8;
 }
 
-main h1,
-main h2,
-main h3,
-main h4 {
-    font-weight: normal;
-}
-
 ul.blog-post-list li {
     margin-bottom: 3rem;
 }
